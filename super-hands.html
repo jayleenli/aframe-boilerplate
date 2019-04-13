@@ -3,18 +3,38 @@
   <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
   <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
   <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script>
-  <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
+  <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.1.2/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
 </head>
 
 <body>
   <a-scene>
-    <a-assets></a-assets>
+  	<!-- Camera and Motion Controllers -->
     <a-entity>
-      <a-camera></a-camera>
-      <a-entity sphere-collider="objects: a-box" super-hands hand-controls="left"></a-entity>
-      <a-entity sphere-collider="objects: a-box" super-hands hand-controls="right"></a-entity>
-    </a-entity>
+        <a-camera positon="0 1.6 0"></a-camera>
+        <a-entity windows-motion-controls="hand: left"></a-entity>
+<a-entity windows-motion-controls="hand: right"></a-entity>
+      </a-entity>
+
+    <a-assets>
+    	<a-mixin id="touch"
+                 physics-collider phase-shift
+                 collision-filter="collisionForces: false"
+                 static-body="shape: sphere; sphereRadius: 0.02"
+                 super-hands="colliderEvent: collisions;
+                              colliderEventProperty: els;
+                              colliderEndEvent: collisions;
+                              colliderEndEventProperty: clearedEls;">
+        </a-mixin>
+
+
+    </a-assets>
+
+
     <!-- hover & drag-drop won't have any obvious effect without some additional event handlers or components. See the examples page for more -->
     <a-box hoverable grabbable stretchable draggable dropppable color="blue" position="0 0 -1"></a-box>
+    <a-box hoverable grabbable stretchable draggable dropppable color="red" position="0 0 1"></a-box>
   </a-scene>
 </body>
