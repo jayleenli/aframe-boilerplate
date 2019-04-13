@@ -4,14 +4,34 @@
     <meta charset="utf-8">
     <title>Hello, World! - A-Frame</title>
     <meta name="description" content="Hello, World! - A-Frame">
-    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script>
   </head>
   <body>
+
+
     <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      
+
+      <a-box src="https://i.imgur.com/mYmmbrp.jpg" position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"  animation="property: position; to: 5 .5 -3; dur: 1500; easing: linear"
+      ></a-box>
       <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
       <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <a-plane src="http://3.bp.blogspot.com/-domdpxmObBo/Tt4iUpgwNYI/AAAAAAAAAbc/fhWW_4E5A6E/s1600/Game+ground.jpg" repeat="10 10" position="0 0 -4" rotation="-90 0 0" width="15" height="15" ></a-plane>
+      <a-entity id="mouseCursor" cursor="rayOrigin: mouse" raycaster="objects: #box"></a-entity>
+      
+      <a-entity id ="flag">
+      <a-box position="-3 .1 0" color="#5b5b5b" rotation="0 0 0" width="1" height=".1" depth="1">
+        <a-box position="0 .1 0" color="#606060" rotation="0 0 0" width=".6" height=".1" depth=".6">
+        <a-box position="0 .1 0" color="#606060" rotation="0 45 0" width=".1" height="3" depth=".1">
+<a-triangle color="#ff0000" vertex-c=".6 -.25 .6" vertex-a="0 0 0" vertex-b="0 -.5 0" position="0 1.5 0"></a-triangle>
+  </a-entity>
+
+      <a-entity id="box" geometry="primitive: box" material="color: red" position="0 1.8 -3" rotation="0 30 0"
+                animation__mouseenter="property: components.material.material.color; type: color; from: red; to: blue; startEvents: mouseenter; dur: 500"
+                animation__mouseleave="property: components.material.material.color; type: color; from: blue; to: red; startEvents: mouseleave; dur: 500">
+
       <a-sky color="#ECECEC"></a-sky>
     </a-scene>
   </body>
